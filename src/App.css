@@ -73,11 +73,11 @@ body {
   height: 569px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-flow: row wrap;
 }
 #container .wrapc_box {
-  width: 260px;
+  width: 237px;
   height: 250px;
   margin: 10px;
   border: black solid 2px;
