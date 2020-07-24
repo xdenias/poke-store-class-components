@@ -10,23 +10,28 @@ class App extends Component {
       preco: [],
     };
   }
+  async getData() {
+    const { data } = await api.get(`/plant`);
+    const species = data.pokemon_species;
+    let ar = [];
+    this.setState({ pokemons: species });
 
-  async requestAPI(index) {
-    const response = await (await api.get(`/plant`)).data.pokemon_species;
-    this.setState({ pokemons: response });
     for (var i = 0; i < this.state.pokemons.length; i++) {
-      this.state.preco[i] = Math.floor(
-        Math.random(this.state.pokemons[i].valueOf) * 100
-      );
+      let price = Math.floor(Math.random(data.length) * 100);
+      ar.push(price);
     }
-    return this.state.preco[index];
+    this.setState({ preco: ar });
+    console.log(this.state.pokemons);
   }
-
+  addPokemon(index) {
+    console.log(index);
+  }
   componentDidMount() {
-    this.requestAPI();
+    this.getData();
   }
-
   render() {
+    const { preco } = this.state;
+
     return (
       <React.Fragment>
         <header id="box_input">
@@ -38,23 +43,30 @@ class App extends Component {
           <section className="wrapc">
             <div className="wrapc_box">
               <img src="" alt="" />
-              <button className="wrapc_button">{this.state.preco}</button>
+              <button className="wrapc_button">ADD</button>
             </div>
 
-            {this.state.pokemons.map((valor, index, x) => {
+            {this.state.pokemons.map((valor, index) => {
               return (
                 <div className="wrapc_box" key={valor.name}>
                   <img src="" alt="" />
                   <h1>{valor.name}</h1>
-                  <h4>precos</h4>
-                  <button className="wrapc_button"></button>
+                  <h4>R${preco[index]},00</h4>
+                  <button
+                    className="wrapc_button"
+                    onClick={() => {
+                      this.addPokemon(preco[index]);
+                    }}
+                  >
+                    Adicionar ao carrinho
+                  </button>
                 </div>
               );
             })}
           </section>
           <section className="wrapd">
             <h1>Carrinho</h1>
-            <aside className="Itens">{/* <h4>{this.pokemons[0]}</h4> */}</aside>
+            <aside className="Itens"></aside>
             <h3>Total</h3>
             <button>Finalizar</button>
           </section>
