@@ -115,6 +115,22 @@ body {
   height: 400px;
   border-bottom: solid black 1px;
 }
+#container .wrapd aside table {
+}
+#container .wrapd aside table tr {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  border: solid 1px black;
+}
+#container .wrapd aside table tr td {
+  width: 120px;
+  height: 20px;
+  padding-right: 37px;
+  padding-left: 50px;
+  /* border-bottom: solid 1px black; */
+}
+
 #container .wrapd h2 {
   border-bottom: solid black 1px;
   width: 90%;

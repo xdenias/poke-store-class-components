@@ -8,6 +8,8 @@ class App extends Component {
     this.state = {
       pokemons: [],
       preco: [],
+      priceAside: [],
+      pokemonAside: [],
     };
   }
   async getData() {
@@ -15,23 +17,34 @@ class App extends Component {
     const species = data.pokemon_species;
     let ar = [];
     this.setState({ pokemons: species });
-
     for (var i = 0; i < this.state.pokemons.length; i++) {
       let price = Math.floor(Math.random(data.length) * 100);
       ar.push(price);
     }
     this.setState({ preco: ar });
-    console.log(this.state.pokemons);
   }
-  addPokemon(index) {
-    console.log(index);
+  addPokemon(index, name) {
+    const { priceAside, pokemonAside } = this.state;
+
+    priceAside.push(name, index);
+    this.setState({ priceAside: priceAside });
+    console.log(priceAside);
   }
+  // filterItems(query) {
+  //   const { priceAside, pokemonAside } = this.state;
+  //   return priceAside.filter((el) => {
+  //     return el.toLowerCase.indexOf(query.toLowerCase()) > -1;
+  //   });
+
+  //   priceAside
+  //     .filter((name) => name.includes("J"))
+  //     .map((filteredName) => <li>{filteredName}</li>);
+  // }
   componentDidMount() {
     this.getData();
   }
   render() {
-    const { preco } = this.state;
-
+    const { preco, priceAside } = this.state;
     return (
       <React.Fragment>
         <header id="box_input">
@@ -45,7 +58,6 @@ class App extends Component {
               <img src="" alt="" />
               <button className="wrapc_button">ADD</button>
             </div>
-
             {this.state.pokemons.map((valor, index) => {
               return (
                 <div className="wrapc_box" key={valor.name}>
@@ -55,7 +67,7 @@ class App extends Component {
                   <button
                     className="wrapc_button"
                     onClick={() => {
-                      this.addPokemon(preco[index]);
+                      this.addPokemon(preco[index], valor.name);
                     }}
                   >
                     Adicionar ao carrinho
@@ -66,7 +78,17 @@ class App extends Component {
           </section>
           <section className="wrapd">
             <h1>Carrinho</h1>
-            <aside className="Itens"></aside>
+            <aside className="Itens">
+              <table>
+                <tbody>
+                  <tr>
+                    {this.state.priceAside.map((valor, index) => {
+                      return <td>{priceAside[index]}</td>;
+                    })}
+                  </tr>
+                </tbody>
+              </table>
+            </aside>
             <h3>Total</h3>
             <button>Finalizar</button>
           </section>
