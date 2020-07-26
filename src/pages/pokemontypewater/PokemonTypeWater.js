@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import api from "./services/api";
-import "./App.css";
+import api from "../../services/api";
+import "../../pages/App.css";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends Component {
     };
   }
   async getData() {
-    const { data } = await api.get(`/plant`);
+    const { data } = await api.get(`/water1`);
     const species = data.pokemon_species;
     let ar = [];
     const speciesWithSprites = species.map((pokemon) => {
@@ -71,7 +71,7 @@ class App extends Component {
               this.showCart();
             }}
           >
-            carrinho
+            Cart
           </button>
         </header>
         <main id="container">

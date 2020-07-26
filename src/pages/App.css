@@ -11,6 +11,7 @@ label,
 input,
 td {
   font-family: "Open Sans", sans-serif;
+  font-size: 16px;
 }
 h1,
 h2,
@@ -44,6 +45,7 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: -1px 0px 60px 0px rgba(44, 11, 230, 0.75);
+  margin: 0% 5%;
 }
 #box_input .input_name input {
   border: none;
@@ -51,6 +53,9 @@ body {
   max-width: 900px;
   height: 40px;
   border-radius: 3px;
+  margin: 0% 10%;
+  font-size: 20px;
+  padding: 0% 2%;
 }
 #box_input .input_name input:hover {
   border: solid 3px #dd0225;
@@ -88,6 +93,9 @@ body {
   border: black solid 2px;
   border-radius: 64px;
 }
+#container .wrapc_box img:hover {
+  background: rgba(255, 0, 0, 0.829);
+}
 #container .wrapc_box h1,
 h4 {
   font-size: 18px;
@@ -98,6 +106,12 @@ h4 {
   height: 60px;
   border: black solid 2px;
   border-radius: 10px;
+  font-size: 18px;
+}
+#container .wrapc_box button:hover {
+  background: black;
+  color: white;
+  cursor: pointer;
 }
 #container aside.wrapd {
   width: 28%;
@@ -156,14 +170,19 @@ h4 {
   font-size: 20px;
   margin-top: 15px;
   border-radius: 31px;
+  cursor: pointer;
 }
-
 /* RESPONSIVO */
-@media (max-width: 600px) {
+@media (max-width: 769px) {
   #box_input .carrinho-button {
     display: block;
+    width: 77px;
+    height: 56px;
+    font-size: 20px;
+    border: none;
+    margin: 0% 5%;
+    border-radius: 44px;
   }
-
   #container aside.wrapd {
     position: absolute;
     left: 0;
@@ -174,8 +193,28 @@ h4 {
     height: calc(100vh - 85px);
     display: none;
   }
-
   #container aside.wrapd.active {
     display: block;
+  }
+  #container aside.wrapd div {
+    width: 100%;
+    height: calc(100vh - 264px);
+    border-bottom: solid black 1px;
+  }
+  #container aside.wrapd h1 {
+    border-bottom: solid black 1px;
+    width: 100%;
+    padding: 7px;
+  }
+  #container aside.wrapd button {
+    width: 150px;
+    height: 50px;
+    border: solid 1px black;
+    background: rgba(0, 0, 0, 0.932);
+    color: white;
+    font-size: 20px;
+    margin-top: 15px;
+    border-radius: 31px;
+    margin-left: 35vw;
   }
 }
