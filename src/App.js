@@ -2,13 +2,6 @@ import React, { Component } from "react";
 import api from "./services/api";
 import "./App.css";
 
-const currency = (value) => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(value);
-};
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,75 +11,68 @@ class App extends Component {
       priceAside: [],
       pokemonAside: [],
       totalP: 0,
+      isShowCart: false,
     };
   }
-
   async getData() {
     const { data } = await api.get(`/plant`);
     const species = data.pokemon_species;
     let ar = [];
     const speciesWithSprites = species.map((pokemon) => {
       const pokemonID = pokemon.url.match(/\d+/g)[1];
-
       return {
         ...pokemon,
         img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonID}.png`,
       };
     });
-
     this.setState({ pokemons: speciesWithSprites });
-    // setPokemons(speciesWithSprites);
-
     for (var i = 0; i < species.length; i++) {
       let price = Math.floor(Math.random(data.length) * 100);
       ar.push(price);
     }
-
     this.setState({ preco: ar });
-
-    // this.setState({ pokemons: species });
-    // for (var i = 0; i < this.state.pokemons.length; i++) {
-    //   let price = Math.floor(Math.random(data.length) * 100);
-    //   ar.push(price);
-    // }
-    // this.setState({ preco: ar });
   }
-
   addPokemon(value, name) {
     const { priceAside } = this.state;
-
     this.setState({
       priceAside: [...priceAside, { name: name, price: value }],
     });
   }
+  currency(value) {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(value);
+  }
   totalPrice() {
-    const { priceAside, totalP } = this.state;
+    const { priceAside } = this.state;
     return priceAside
       .map((item) => item && item.price)
       .reduce((a, b) => a + b, 0);
   }
-
-  // filterItems(query) {
-  //   const { priceAside, pokemonAside } = this.state;
-  //   return priceAside.filter((el) => {
-  //     return el.toLowerCase.indexOf(query.toLowerCase()) > -1;
-  //   });
-
-  //   priceAside
-  //     .filter((name) => name.includes("J"))
-  //     .map((filteredName) => <li>{filteredName}</li>);
-  // }
+  showCart() {
+    const { isShowCart } = this.state;
+    this.setState({ isShowCart: !isShowCart });
+  }
   componentDidMount() {
     this.getData();
   }
   render() {
-    const { preco, priceAside, pokemons } = this.state;
+    const { preco, priceAside, pokemons, isShowCart } = this.state;
     return (
       <React.Fragment>
         <header id="box_input">
           <nav className="input_name">
             <input></input>
           </nav>
+          <button
+            className="carrinho-button"
+            onClick={() => {
+              this.showCart();
+            }}
+          >
+            carrinho
+          </button>
         </header>
         <main id="container">
           <section className="wrapc">
@@ -99,7 +85,7 @@ class App extends Component {
                 <div className="wrapc_box" key={valor.name}>
                   <img src={valor.img} alt={valor.name} />
                   <h1>{valor.name}</h1>
-                  <h4>{currency(preco[index])}</h4>
+                  <h4>{this.currency(preco[index])}</h4>
                   <button
                     className="wrapc_button"
                     onClick={() => {
@@ -112,7 +98,7 @@ class App extends Component {
               );
             })}
           </section>
-          <aside className={`wrapd `}>
+          <aside className={`wrapd ${isShowCart ? "active" : ""}`}>
             <h1>Carrinho</h1>
             <div className="Itens">
               <table>
@@ -121,15 +107,17 @@ class App extends Component {
                     return (
                       <tr key={`${item.name}-${item.price}`}>
                         <td>{item.name}</td>
-                        <td>R${item.price},00</td>
+                        <td>R$ {item.price},00</td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>
-            <h3>Total</h3>
-            <div>{currency(this.totalPrice())}</div>
+            <div className="total_tag">
+              <h3>Total: </h3>
+              <h3>{this.currency(this.totalPrice())}</h3>
+            </div>
             <button>Finalizar</button>
           </aside>
         </main>
