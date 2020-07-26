@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import api from "./services/api";
 import "./App.css";
 
+const currency = (value) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(value);
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,26 +17,55 @@ class App extends Component {
       preco: [],
       priceAside: [],
       pokemonAside: [],
+      totalP: 0,
     };
   }
+
   async getData() {
     const { data } = await api.get(`/plant`);
     const species = data.pokemon_species;
     let ar = [];
-    this.setState({ pokemons: species });
-    for (var i = 0; i < this.state.pokemons.length; i++) {
+    const speciesWithSprites = species.map((pokemon) => {
+      const pokemonID = pokemon.url.match(/\d+/g)[1];
+
+      return {
+        ...pokemon,
+        img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonID}.png`,
+      };
+    });
+
+    this.setState({ pokemons: speciesWithSprites });
+    // setPokemons(speciesWithSprites);
+
+    for (var i = 0; i < species.length; i++) {
       let price = Math.floor(Math.random(data.length) * 100);
       ar.push(price);
     }
-    this.setState({ preco: ar });
-  }
-  addPokemon(index, name) {
-    const { priceAside, pokemonAside } = this.state;
 
-    priceAside.push(name, index);
-    this.setState({ priceAside: priceAside });
-    console.log(priceAside);
+    this.setState({ preco: ar });
+
+    // this.setState({ pokemons: species });
+    // for (var i = 0; i < this.state.pokemons.length; i++) {
+    //   let price = Math.floor(Math.random(data.length) * 100);
+    //   ar.push(price);
+    // }
+    // this.setState({ preco: ar });
   }
+
+  addPokemon(value, name) {
+    const { priceAside } = this.state;
+
+    this.setState({
+      priceAside: [...priceAside, { name: name, price: value }],
+    });
+  }
+  totalPrice() {
+    const { priceAside, totalP } = this.state;
+    return priceAside
+      .map((item) => item && item.price)
+      .reduce((a, b) => a + b, 0);
+  }
+
   // filterItems(query) {
   //   const { priceAside, pokemonAside } = this.state;
   //   return priceAside.filter((el) => {
@@ -44,7 +80,7 @@ class App extends Component {
     this.getData();
   }
   render() {
-    const { preco, priceAside } = this.state;
+    const { preco, priceAside, pokemons } = this.state;
     return (
       <React.Fragment>
         <header id="box_input">
@@ -58,12 +94,12 @@ class App extends Component {
               <img src="" alt="" />
               <button className="wrapc_button">ADD</button>
             </div>
-            {this.state.pokemons.map((valor, index) => {
+            {pokemons.map((valor, index) => {
               return (
                 <div className="wrapc_box" key={valor.name}>
-                  <img src="" alt="" />
+                  <img src={valor.img} alt={valor.name} />
                   <h1>{valor.name}</h1>
-                  <h4>R${preco[index]},00</h4>
+                  <h4>{currency(preco[index])}</h4>
                   <button
                     className="wrapc_button"
                     onClick={() => {
@@ -76,22 +112,26 @@ class App extends Component {
               );
             })}
           </section>
-          <section className="wrapd">
+          <aside className={`wrapd `}>
             <h1>Carrinho</h1>
-            <aside className="Itens">
+            <div className="Itens">
               <table>
                 <tbody>
-                  <tr>
-                    {this.state.priceAside.map((valor, index) => {
-                      return <td>{priceAside[index]}</td>;
-                    })}
-                  </tr>
+                  {priceAside.map((item) => {
+                    return (
+                      <tr key={`${item.name}-${item.price}`}>
+                        <td>{item.name}</td>
+                        <td>R${item.price},00</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
-            </aside>
+            </div>
             <h3>Total</h3>
+            <div>{currency(this.totalPrice())}</div>
             <button>Finalizar</button>
-          </section>
+          </aside>
         </main>
       </React.Fragment>
     );

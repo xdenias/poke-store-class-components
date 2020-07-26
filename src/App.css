@@ -85,16 +85,24 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 14px;
 }
 #container .wrapc_box img {
   width: 130px;
   height: 130px;
   border: black solid 2px;
+  border-radius: 64px;
+}
+#container .wrapc_box h1,
+h4 {
+  font-size: 18px;
+  padding: 2px;
 }
 #container .wrapc_box button {
   width: 190px;
   height: 60px;
   border: black solid 2px;
+  border-radius: 10px;
 }
 
 #container .wrapd {
