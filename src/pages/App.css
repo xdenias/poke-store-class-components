@@ -172,6 +172,38 @@ h4 {
   border-radius: 31px;
   cursor: pointer;
 }
+
+/* Home */
+
+#content {
+  width: 100%;
+  height: 100vh;
+  background: blue;
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+}
+#content .content_plant {
+  width: 100%;
+  height: 55vh;
+  background: black;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#content .content_water {
+  width: 100%;
+  height: 45vh;
+  background: rgba(255, 0, 0, 0.836);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Home */
+
 /* RESPONSIVO */
 @media (max-width: 769px) {
   #box_input .carrinho-button {
