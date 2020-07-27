@@ -23,10 +23,10 @@ body {
   font-size: 16px;
 }
 /* FIM DAS CONFIGURAÇÕES GERAIS DA PÁGINA */
-#box_input {
+#sw_box_input {
   width: auto;
   height: 85px;
-  background: red;
+  background: rgb(139, 172, 246);
   /* margin: 3px; */
   border-radius: 3px;
   display: flex;
@@ -34,20 +34,20 @@ body {
   justify-content: center;
   /* box-shadow: -1px 0px 48px -2px rgba(0, 0, 0, 0.75); */
 }
-#box_input .carrinho-button {
+#sw_box_input .sw_carrinho-button {
   display: none;
 }
-#box_input .input_name {
+#sw_box_input .sw_input_name {
   width: 95%;
   height: 65px;
-  background: black;
+  background: rgba(0, 0, 0, 0.911);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: -1px 0px 60px 0px rgba(44, 11, 230, 0.75);
   margin: 0% 5%;
 }
-#box_input .input_name input {
+#sw_box_input .sw_input_name input {
   border: none;
   width: 100%;
   max-width: 900px;
@@ -57,16 +57,16 @@ body {
   font-size: 20px;
   padding: 0% 2%;
 }
-#box_input .input_name input:hover {
-  border: solid 3px #dd0225;
+#sw_box_input .sw_input_name input:hover {
+  border: solid 3px rgb(139, 172, 246);
 }
-#container {
+#sw_container {
   width: 100%;
   height: 570px;
   display: flex;
   flex-direction: row;
 }
-#container .wrapc {
+#sw_container .sw_wrapc {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -76,7 +76,7 @@ body {
   overflow-x: auto;
   width: 100vw;
 }
-#container .wrapc_box {
+#sw_container .sw_wrapc_box {
   width: 237px;
   height: 250px;
   margin: 10px;
@@ -87,33 +87,33 @@ body {
   flex-direction: column;
   border-radius: 14px;
 }
-#container .wrapc_box img {
+#sw_container .sw_wrapc_box img {
   width: 130px;
   height: 130px;
   border: black solid 2px;
   border-radius: 64px;
 }
-#container .wrapc_box img:hover {
-  background: rgba(255, 0, 0, 0.829);
+#sw_container .sw_wrapc_box img:hover {
+  background: rgb(139, 172, 246);
 }
-#container .wrapc_box h1,
+#sw_container .sw_wrapc_box h1,
 h4 {
   font-size: 18px;
   padding: 2px;
 }
-#container .wrapc_box button {
+#sw_container .sw_wrapc_box button {
   width: 190px;
   height: 60px;
   border: black solid 2px;
   border-radius: 10px;
   font-size: 18px;
 }
-#container .wrapc_box button:hover {
-  background: black;
+#sw_container .sw_wrapc_box button:hover {
+  background: rgb(139, 172, 246);
   color: white;
   cursor: pointer;
 }
-#container aside.wrapd {
+#sw_container aside.sw_wrapd {
   width: 28%;
   height: calc(100vh - 85px);
   border-left: solid 1px black;
@@ -121,47 +121,47 @@ h4 {
   flex-direction: column;
   align-items: center;
 }
-#container aside.wrapd .total_tag {
+#sw_container aside.sw_wrapd .sw_total_tag {
   height: 24px;
   display: flex;
   justify-content: space-between;
 }
-#container aside.wrapd .total_tag h3:nth-child(2) {
+#sw_container aside.sw_wrapd .sw_total_tag h3:nth-child(2) {
   display: flex;
   justify-content: flex-end;
 }
-#container aside.wrapd h1 {
+#sw_container aside.sw_wrapd h1 {
   border-bottom: solid black 1px;
   width: 90%;
 
   padding: 7px;
 }
-#container aside.wrapd div {
+#sw_container aside.sw_wrapd div {
   width: 90%;
   height: calc(100vh - 264px);
   border-bottom: solid black 1px;
 }
-#container aside.wrapd div table {
+#sw_container aside.sw_wrapd div table {
   width: 99%;
 }
-#container aside.wrapd table tr {
+#sw_container aside.sw_wrapd table tr {
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;
   border-bottom: solid 1px black;
 }
-#container aside.wrapd table tr td {
+#sw_container aside.sw_wrapd table tr td {
   width: 69px;
 }
-#container aside.wrapd h2 {
+#sw_container aside.sw_wrapd h2 {
   border-bottom: solid black 1px;
   width: 90%;
 }
-#container aside.wrapd h3 {
+#sw_container aside.sw_wrapd h3 {
   border-bottom: solid black 1px;
   width: 90%;
 }
-#container aside.wrapd button {
+#sw_container aside.sw_wrapd button {
   width: 150px;
   height: 50px;
   border: solid 1px black;
@@ -172,41 +172,9 @@ h4 {
   border-radius: 31px;
   cursor: pointer;
 }
-
-/* Home */
-
-#content {
-  width: 100%;
-  height: 100vh;
-  background: blue;
-  display: flex;
-  flex-direction: column;
-  font-size: 28px;
-}
-#content .content_plant {
-  width: 100%;
-  height: 55vh;
-  background: black;
-  color: rgb(255, 255, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#content .content_water {
-  width: 100%;
-  height: 45vh;
-  background: rgba(255, 0, 0, 0.836);
-  color: rgb(255, 255, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Home */
-
 /* RESPONSIVO */
 @media (max-width: 769px) {
-  #box_input .carrinho-button {
+  #sw_box_input .sw_carrinho-button {
     display: block;
     width: 77px;
     height: 56px;
@@ -215,7 +183,7 @@ h4 {
     margin: 0% 5%;
     border-radius: 44px;
   }
-  #container aside.wrapd {
+  #sw_container aside.sw_wrapd {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -225,20 +193,20 @@ h4 {
     height: calc(100vh - 85px);
     display: none;
   }
-  #container aside.wrapd.active {
+  #sw_container aside.sw_wrapd.active {
     display: block;
   }
-  #container aside.wrapd div {
+  #sw_container aside.sw_wrapd div {
     width: 100%;
     height: calc(100vh - 264px);
     border-bottom: solid black 1px;
   }
-  #container aside.wrapd h1 {
+  #sw_container aside.sw_wrapd h1 {
     border-bottom: solid black 1px;
     width: 100%;
     padding: 7px;
   }
-  #container aside.wrapd button {
+  #sw_container aside.sw_wrapd button {
     width: 150px;
     height: 50px;
     border: solid 1px black;

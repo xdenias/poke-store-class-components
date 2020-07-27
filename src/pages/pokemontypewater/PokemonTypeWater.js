@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import api from "../../services/api";
-import "../../pages/App.css";
+import "./PokemonTypeWater.css";
 
 class App extends Component {
   constructor(props) {
@@ -61,12 +61,12 @@ class App extends Component {
     const { preco, priceAside, pokemons, isShowCart } = this.state;
     return (
       <React.Fragment>
-        <header id="box_input">
-          <nav className="input_name">
+        <header id="sw_box_input">
+          <nav className="sw_input_name">
             <input></input>
           </nav>
           <button
-            className="carrinho-button"
+            className="sw_carrinho-button"
             onClick={() => {
               this.showCart();
             }}
@@ -74,20 +74,20 @@ class App extends Component {
             Cart
           </button>
         </header>
-        <main id="container">
-          <section className="wrapc">
-            <div className="wrapc_box">
+        <main id="sw_container">
+          <section className="sw_wrapc">
+            <div className="sw_wrapc_box">
               <img src="" alt="" />
-              <button className="wrapc_button">ADD</button>
+              <button className="sw_wrapc_button">ADD</button>
             </div>
             {pokemons.map((valor, index) => {
               return (
-                <div className="wrapc_box" key={valor.name}>
+                <div className="sw_wrapc_box" key={valor.name}>
                   <img src={valor.img} alt={valor.name} />
                   <h1>{valor.name}</h1>
                   <h4>{this.currency(preco[index])}</h4>
                   <button
-                    className="wrapc_button"
+                    className="sw_wrapc_button"
                     onClick={() => {
                       this.addPokemon(preco[index], valor.name);
                     }}
@@ -98,9 +98,9 @@ class App extends Component {
               );
             })}
           </section>
-          <aside className={`wrapd ${isShowCart ? "active" : ""}`}>
+          <aside className={`sw_wrapd ${isShowCart ? "active" : ""}`}>
             <h1>Carrinho</h1>
-            <div className="Itens">
+            <div className="sw_Itens">
               <table>
                 <tbody>
                   {priceAside.map((item) => {
@@ -114,7 +114,7 @@ class App extends Component {
                 </tbody>
               </table>
             </div>
-            <div className="total_tag">
+            <div className="sw_total_tag">
               <h3>Total: </h3>
               <h3>{this.currency(this.totalPrice())}</h3>
             </div>

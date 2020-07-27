@@ -1,0 +1,61 @@
+/* CONFIGURAÇÕES GERAIS DA PÁGINA */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a,
+p,
+label,
+input,
+td {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Open Sans", sans-serif;
+}
+body {
+  font-size: 16px;
+}
+
+/* Home */
+
+#content {
+  width: 100%;
+  height: 100vh;
+  background: blue;
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+}
+#content .content_plant {
+  width: 100%;
+  height: 55vh;
+  background: black;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#content .content_water {
+  width: 100%;
+  height: 45vh;
+  background: rgba(255, 0, 0, 0.836);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content h1 a {
+  font-size: 60px;
+  /* list-style-type: none; */
+  text-decoration: none;
+  color: aliceblue;
+}
+
+/* Home */

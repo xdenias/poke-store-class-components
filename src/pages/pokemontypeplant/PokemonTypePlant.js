@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import api from "../../services/api";
-import "../../pages/App.css";
+import "./PokemonTypePlant.css";
 
 class App extends Component {
   constructor(props) {
