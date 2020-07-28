@@ -2,9 +2,13 @@
   <img src="./src/assets/img/pokestore_logo.png"/>
 </p>
 
-## O que é?
+Projeto desenvolvido para o processo seletivo da <a href="https://ri.b2w.digital/">B2W Digital</a>. O objetivo do desafio era vivênciar a experiência de construir uma loja virtual de Pokémon.
 
-A PokéStore é o projeto que desenvolvi no processo seletivo da <a href="https://ri.b2w.digital/">B2W Digital</a>. O objetivo do desafio era vivênciar a experiência de construir uma loja virtual mostrando como eu imaginaria uma loja de Pokémon.
+## Instalando projeto
+
+- Clone o projeto
+- Digite o comando "npm i" no terminal para instalar as dependeicias do projeto.
+- Digite o comando "npm start" para exercutar o projeto.
 
 ## Features
 
@@ -29,3 +33,10 @@ Os Pokémon devem ser exibidos a partir da <a href="https://pokeapi.co/">pokeapi
 - [x] ReactJS
 - [x] React Router
 - [x] Axios (HTTP Client)
+
+## Imagens do projeto
+
+- Adicionando os Pokémon ao carrinho e somando os preços
+<p align=center>
+  <img src="./src/assets/img/addPokemon_TotalPrince.gif"/>
+</p>
