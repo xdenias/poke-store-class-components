@@ -10,7 +10,8 @@ class App extends Component {
       preco: [],
       priceAside: [],
       pokemonAside: [],
-      totalP: 0,
+      valueField: "",
+      pokemonsFitered: [],
       isShowCart: false,
     };
   }
@@ -38,6 +39,21 @@ class App extends Component {
       priceAside: [...priceAside, { name: name, price: value }],
     });
   }
+  updatePokemons(valueParameter) {
+    const { valueField, pokemons } = this.state;
+    let { pokemonsFitered } = this.state;
+    this.setState({ valueField: valueParameter.target.value });
+    console.log(valueField);
+    if (valueField === "") {
+      this.getData();
+    } else {
+      pokemonsFitered = pokemons.filter((eachPokemon) =>
+        eachPokemon.name.includes(valueField)
+      );
+    }
+
+    this.setState({ pokemons: pokemonsFitered });
+  }
   currency(value) {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -58,12 +74,20 @@ class App extends Component {
     this.getData();
   }
   render() {
-    const { preco, priceAside, pokemons, isShowCart } = this.state;
+    const { preco, priceAside, pokemons, isShowCart, valueField } = this.state;
     return (
       <React.Fragment>
         <header id="sw_box_input">
           <nav className="sw_input_name">
-            <input></input>
+            <input
+              id="search"
+              className="search"
+              placeholder="Digite qual pokemon deseja procurar"
+              value={valueField}
+              onChange={(valueParameter) => {
+                this.updatePokemons(valueParameter);
+              }}
+            ></input>
           </nav>
           <button
             className="sw_carrinho-button"
