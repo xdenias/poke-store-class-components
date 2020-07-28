@@ -7,12 +7,12 @@ Projeto desenvolvido para o processo seletivo da <a href="https://ri.b2w.digital
 ## Instalando projeto
 
 - Clone o projeto
-- Digite o comando "npm i" no terminal para instalar as dependeicias do projeto.
+- Digite o comando "npm i" no terminal para instalar as dependências do projeto.
 - Digite o comando "npm start" para exercutar o projeto.
 
 ## Features
 
-Os Pokémon devem ser exibidos a partir da <a href="https://pokeapi.co/">pokeapi</a>, uma api RESTful com dados de quase todos os Pokémon. Além disso, as features pedidas no MVP:
+Os Pokémon devem ser exibidos a partir da <a href="https://pokeapi.co/">poke api</a>, uma api RESTful com dados de quase todos os Pokémon. Além disso, as features pedidas no MVP:
 
 - [x] Catálogo de produtos
 - [x] Carrinho lateral
@@ -62,4 +62,10 @@ Os Pokémon devem ser exibidos a partir da <a href="https://pokeapi.co/">pokeapi
 
 <p align=center>
   <img src="./src/assets/img/modalOnScreen.gif"/>
+</p>
+
+- Salvando os dados da compra do usuário localmente e reiniciando o processo de compra após finalizar
+
+<p align=center>
+  <img src="./src/assets/img/persistencia.gif"/>
 </p>
