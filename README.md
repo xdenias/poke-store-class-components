@@ -36,12 +36,17 @@ Os Pokémon devem ser exibidos a partir da <a href="https://pokeapi.co/">pokeapi
 
 ## Imagens do projeto
 
-- Adicionando os Pokémon ao carrinho e somando os preços
+- Duas lojas conforme descrito no teste
+<p align=center>
+  <img src="./src/assets/img/homeStore.png"/>
+</p>
+
+* Adicionando os Pokémon ao carrinho e somando os preços
 <p align=center>
   <img src="./src/assets/img/addPokemon_TotalPrince.gif"/>
 </p>
 
-- Site responsivo
+* Site responsivo
 
 <p align=center>
   <img src="./src/assets/img/responsive.gif"/>
