@@ -61,6 +61,12 @@ class App extends Component {
       show: !this.state.show,
     });
   }
+  resetPrices() {
+    this.setState({
+      priceAside: [],
+    });
+    this.getData();
+  }
   onClose(e) {
     this.props.onClose && this.props.onClose(e);
   }
@@ -156,6 +162,7 @@ class App extends Component {
               className="tw_total_button"
               onClick={() => {
                 this.showModal();
+                this.resetPrices();
               }}
             >
               Finalizar

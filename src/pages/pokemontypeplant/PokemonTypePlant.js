@@ -61,6 +61,12 @@ class App extends Component {
       show: !this.state.show,
     });
   }
+  resetPrices() {
+    this.setState({
+      priceAside: [],
+    });
+    this.getData();
+  }
   onClose(e) {
     this.props.onClose && this.props.onClose(e);
   }
@@ -163,6 +169,7 @@ class App extends Component {
             <Modal
               onClose={() => {
                 this.showModal();
+                this.resetPrices();
               }}
               show={this.state.show}
             >
