@@ -51,3 +51,15 @@ Os Pokémon devem ser exibidos a partir da <a href="https://pokeapi.co/">pokeapi
 <p align=center>
   <img src="./src/assets/img/responsive.gif"/>
 </p>
+
+- Barra de busca para filtrar os Pokémon
+
+<p align=center>
+  <img src="./src/assets/img/filterPokemon.gif"/>
+</p>
+
+- Modal de obrigado ao finalizar compra
+
+<p align=center>
+  <img src="./src/assets/img/modalOnScreen.gif"/>
+</p>
