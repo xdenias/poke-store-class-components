@@ -62,10 +62,16 @@ class App extends Component {
     });
   }
   resetPrices() {
+    localStorage.removeItem("data");
     this.setState({
       priceAside: [],
     });
     this.getData();
+  }
+  storeData() {
+    const { priceAside } = this.state;
+    localStorage.setItem("data", JSON.stringify(priceAside));
+    // window.location.reload();
   }
   onClose(e) {
     this.props.onClose && this.props.onClose(e);
@@ -87,10 +93,19 @@ class App extends Component {
     this.setState({ isShowCart: !isShowCart });
   }
   componentDidMount() {
+    const { priceAside } = this.state;
     this.getData();
+    let dataStore = localStorage.getItem("data");
+    if (dataStore === null) {
+      this.setState({ priceAside: priceAside });
+    } else {
+      console.log(dataStore);
+      this.setState({ priceAside: JSON.parse(dataStore) });
+    }
   }
   render() {
     const { preco, priceAside, pokemons, isShowCart, valueField } = this.state;
+
     return (
       <React.Fragment>
         <header id="tp_box_input">
@@ -125,11 +140,13 @@ class App extends Component {
                 <div className="tp_wrapc_box" key={valor.name}>
                   <img src={valor.img} alt={valor.name} />
                   <h1>{valor.name}</h1>
+                  {/* {username} */}
                   <h4>{this.currency(preco[index])}</h4>
                   <button
                     className="tp_wrapc_button"
                     onClick={() => {
                       this.addPokemon(preco[index], valor.name);
+                      this.storeData();
                     }}
                   >
                     Adicionar ao carrinho
