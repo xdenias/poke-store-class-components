@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../../services/api";
+import Modal from "../../components/Modal";
 import "./PokemonTypeWater.css";
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
       valueField: "",
       pokemonsFitered: [],
       isShowCart: false,
+      show: false,
     };
   }
   async getData() {
@@ -54,6 +56,14 @@ class App extends Component {
 
     this.setState({ pokemons: pokemonsFitered });
   }
+  showModal() {
+    this.setState({
+      show: !this.state.show,
+    });
+  }
+  onClose(e) {
+    this.props.onClose && this.props.onClose(e);
+  }
   currency(value) {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -77,11 +87,11 @@ class App extends Component {
     const { preco, priceAside, pokemons, isShowCart, valueField } = this.state;
     return (
       <React.Fragment>
-        <header id="sw_box_input">
-          <nav className="sw_input_name">
+        <header id="tw_box_input">
+          <nav className="tw_input_name">
             <input
-              id="search"
-              className="search"
+              id="tw_search"
+              className="tw_search"
               placeholder="Digite qual pokemon deseja procurar"
               value={valueField}
               onChange={(valueParameter) => {
@@ -90,7 +100,7 @@ class App extends Component {
             ></input>
           </nav>
           <button
-            className="sw_carrinho-button"
+            className="tw_carrinho-button"
             onClick={() => {
               this.showCart();
             }}
@@ -98,20 +108,20 @@ class App extends Component {
             Cart
           </button>
         </header>
-        <main id="sw_container">
-          <section className="sw_wrapc">
-            <div className="sw_wrapc_box">
+        <main id="tw_container">
+          <section className="tw_wrapc">
+            <div className="tw_wrapc_box">
               <img src="" alt="" />
-              <button className="sw_wrapc_button">ADD</button>
+              <button className="tw_wrapc_button">ADD</button>
             </div>
             {pokemons.map((valor, index) => {
               return (
-                <div className="sw_wrapc_box" key={valor.name}>
+                <div className="tw_wrapc_box" key={valor.name}>
                   <img src={valor.img} alt={valor.name} />
                   <h1>{valor.name}</h1>
                   <h4>{this.currency(preco[index])}</h4>
                   <button
-                    className="sw_wrapc_button"
+                    className="tw_wrapc_button"
                     onClick={() => {
                       this.addPokemon(preco[index], valor.name);
                     }}
@@ -122,9 +132,9 @@ class App extends Component {
               );
             })}
           </section>
-          <aside className={`sw_wrapd ${isShowCart ? "active" : ""}`}>
+          <aside className={`tw_wrapd ${isShowCart ? "active" : ""}`}>
             <h1>Carrinho</h1>
-            <div className="sw_Itens">
+            <div className="tw_Itens">
               <table>
                 <tbody>
                   {priceAside.map((item) => {
@@ -138,11 +148,26 @@ class App extends Component {
                 </tbody>
               </table>
             </div>
-            <div className="sw_total_tag">
+            <div className="tw_total_tag">
               <h3>Total: </h3>
               <h3>{this.currency(this.totalPrice())}</h3>
             </div>
-            <button>Finalizar</button>
+            <button
+              className="tw_total_button"
+              onClick={() => {
+                this.showModal();
+              }}
+            >
+              Finalizar
+            </button>
+            <Modal
+              onClose={() => {
+                this.showModal();
+              }}
+              show={this.state.show}
+            >
+              New pokemon, new adventure hahaha!
+            </Modal>
           </aside>
         </main>
       </React.Fragment>
