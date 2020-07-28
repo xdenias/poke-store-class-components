@@ -40,3 +40,9 @@ Os Pokémon devem ser exibidos a partir da <a href="https://pokeapi.co/">pokeapi
 <p align=center>
   <img src="./src/assets/img/addPokemon_TotalPrince.gif"/>
 </p>
+
+- Site responsivo
+
+<p align=center>
+  <img src="./src/assets/img/responsive.gif"/>
+</p>
